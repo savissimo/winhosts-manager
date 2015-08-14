@@ -1,0 +1,49 @@
+﻿<Window x:Class="WinHosts_Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:whm="clr-namespace:WinHosts_Manager"
+		Title="WinHosts Manager" 
+		Height="350" Width="525"
+		MinHeight="200" MinWidth="470">
+	<Window.DataContext>
+		<Binding Source="{x:Static Application.Current}" />
+	</Window.DataContext>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition MinWidth="200" />
+			<ColumnDefinition MinWidth="250" />
+		</Grid.ColumnDefinitions>
+
+		<ToolBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+			<Button Name="btnWriteToHosts" Click="btnWriteToHosts_Click">
+				<TextBlock>Write To Hosts</TextBlock>
+			</Button>
+			<Separator />
+			<Button Name="btnNewHost" Click="btnNewHost_Click">
+				<TextBlock>New Host</TextBlock>
+			</Button>
+		</ToolBar>
+
+		<ListBox ItemsSource="{Binding Data.Hosts}" Grid.Row="1" Grid.Column="0"
+				 SelectionChanged="ListBox_SelectionChanged">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal" Margin="0,10">
+						<CheckBox IsChecked="{Binding IsEnabled}" Margin="0,0,10,0" />
+						<StackPanel>
+							<TextBlock Text="{Binding Name}" FontWeight="Bold" />
+							<TextBlock Text="{Binding Address}" />
+						</StackPanel>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<whm:WinHostPropertiesWidget x:Name="wHostProperties" Grid.Row="1" Grid.Column="1">
+		</whm:WinHostPropertiesWidget>
+	</Grid>
+</Window>
