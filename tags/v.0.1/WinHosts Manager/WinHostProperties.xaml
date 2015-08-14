@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="WinHosts_Manager.WinHostPropertiesWidget"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="203*" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Label Content="Host name" Name="label1" Grid.RowSpan="2" Margin="6" />
+		<TextBox Name="textBox1" Grid.Column="1" Margin="6" Text="{Binding Mode=TwoWay, Path=Subject.Name}" />
+		<Label Content="IP Address" Name="label2" Grid.Row="1" Margin="6" />
+		<TextBox Name="textBox2" Grid.Row="1" Grid.Column="1" Margin="6" Text="{Binding Mode=TwoWay, Path=Subject.AddressForXml}" />
+		<CheckBox Name="checkBox1" Content="Enabled" Grid.Row="2" Grid.Column="1" Margin="6" IsChecked="{Binding Path=Subject.IsEnabled, Mode=TwoWay}" />
+	</Grid>
+</UserControl>
