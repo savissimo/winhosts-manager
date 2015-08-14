@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Hosts>
+		<WinHost>
+			<Name>activate.adobe.com</Name>
+			<IsEnabled>true</IsEnabled>
+			<Address>127.0.0.1</Address>
+		</WinHost>
+		<WinHost>
+			<Name>ecommerce.local</Name>
+			<IsEnabled>true</IsEnabled>
+			<Address>127.0.0.1</Address>
+		</WinHost>
+		<WinHost>
+			<Name>local</Name>
+			<IsEnabled>true</IsEnabled>
+			<Address>127.0.0.1</Address>
+		</WinHost>
+	</Hosts>
+</Configuration>
