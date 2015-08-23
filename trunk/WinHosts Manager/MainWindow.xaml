@@ -4,7 +4,7 @@
 		xmlns:whm="clr-namespace:WinHosts_Manager"
 		Title="WinHosts Manager" 
 		Height="350" Width="525"
-		MinHeight="200" MinWidth="470">
+		MinHeight="200" MinWidth="470" Icon="/WinHosts%20Manager;component/gfx/icon.ico">
 	<Window.DataContext>
 		<Binding Source="{x:Static Application.Current}" />
 	</Window.DataContext>
@@ -26,10 +26,13 @@
 			<Button Name="btnNewHost" Click="btnNewHost_Click">
 				<TextBlock>New Host</TextBlock>
 			</Button>
+			<Button Name="btnRemoveHost" Click="btnRemoveHost_Click">
+				<TextBlock>Remove Host</TextBlock>
+			</Button>
 		</ToolBar>
 
-		<ListBox ItemsSource="{Binding Data.Hosts}" Grid.Row="1" Grid.Column="0"
-				 SelectionChanged="ListBox_SelectionChanged">
+		<ListBox ItemsSource="{Binding Data.Hosts}" Grid.Row="1" Grid.Column="0" Name="wListBox"
+				 SelectionChanged="wListBox_SelectionChanged">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Orientation="Horizontal" Margin="0,10">
