@@ -41,11 +41,24 @@ namespace WinHosts_Manager
 			AppData.Hosts.Add(new WinHost());
 		}
 
-		private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void wListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			if (e.AddedItems.Count > 0)
 			{
 				wHostProperties.Subject = e.AddedItems[0] as WinHost;
+			}
+			btnRemoveHost.IsEnabled = wListBox.SelectedItem != null;
+		}
+
+		private void btnRemoveHost_Click(object sender, RoutedEventArgs e)
+		{
+			if (wListBox.SelectedItem != null)
+			{
+				AppData.Hosts.Remove(wListBox.SelectedItem as WinHost);
+				if (wListBox.SelectedItem as WinHost == wHostProperties.Subject)
+				{
+					wHostProperties.Subject = null;
+				}
 			}
 		}
 	}
