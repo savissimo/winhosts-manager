@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:whm="clr-namespace:WinHosts_Manager"
 		Title="WinHosts Manager" 
-		Height="350" Width="525"
+		Height="600" Width="600"
 		MinHeight="200" MinWidth="470" Icon="/WinHosts%20Manager;component/gfx/icon.ico">
 	<Window.DataContext>
 		<Binding Source="{x:Static Application.Current}" />
