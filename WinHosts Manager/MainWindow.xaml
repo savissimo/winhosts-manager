@@ -39,7 +39,7 @@
 						<CheckBox IsChecked="{Binding IsEnabled}" Margin="0,0,10,0" />
 						<StackPanel>
 							<TextBlock Text="{Binding Name}" FontWeight="Bold" />
-							<TextBlock Text="{Binding Address}" />
+							<TextBlock Text="{Binding AddressForXml}" />
 						</StackPanel>
 					</StackPanel>
 				</DataTemplate>
