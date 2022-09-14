@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:whm="clr-namespace:WinHosts_Manager"
 		Title="WinHosts Manager" 
-		Height="350" Width="525"
+		Height="600" Width="600"
 		MinHeight="200" MinWidth="470" Icon="/WinHosts%20Manager;component/gfx/icon.ico">
 	<Window.DataContext>
 		<Binding Source="{x:Static Application.Current}" />
@@ -39,7 +39,7 @@
 						<CheckBox IsChecked="{Binding IsEnabled}" Margin="0,0,10,0" />
 						<StackPanel>
 							<TextBlock Text="{Binding Name}" FontWeight="Bold" />
-							<TextBlock Text="{Binding Address}" />
+							<TextBlock Text="{Binding AddressForXml}" />
 						</StackPanel>
 					</StackPanel>
 				</DataTemplate>

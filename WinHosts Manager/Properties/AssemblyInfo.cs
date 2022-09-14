@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Simone Saviolo")]
 [assembly: AssemblyProduct("WinHosts Manager")]
-[assembly: AssemblyCopyright("Copyright © Simone Saviolo 2015")]
+[assembly: AssemblyCopyright("Copyright © Simone Saviolo 2015-2022")]
 [assembly: AssemblyTrademark("Simone Saviolo")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
 // utilizzando l'asterisco (*) come descritto di seguito:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.1.0.0")]
-[assembly: AssemblyFileVersion("0.1.0.0")]
+[assembly: AssemblyVersion("0.2.1.0")]
+[assembly: AssemblyFileVersion("0.2.1.0")]
