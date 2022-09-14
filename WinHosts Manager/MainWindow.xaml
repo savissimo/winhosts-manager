@@ -20,14 +20,23 @@
 
 		<ToolBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
 			<Button Name="btnWriteToHosts" Click="btnWriteToHosts_Click">
-				<TextBlock>Write To Hosts</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="16" Height="16" Source="gfx/icons_write.png" />
+    				<TextBlock>Write To Hosts</TextBlock>
+                </StackPanel>
 			</Button>
 			<Separator />
 			<Button Name="btnNewHost" Click="btnNewHost_Click">
-				<TextBlock>New Host</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="16" Height="16" Source="gfx/icons_add.png" />
+                    <TextBlock>New Host</TextBlock>
+                </StackPanel>
 			</Button>
 			<Button Name="btnRemoveHost" Click="btnRemoveHost_Click">
-				<TextBlock>Remove Host</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="16" Height="16" Source="gfx/icons_remove.png" />
+					<TextBlock>Remove Host</TextBlock>
+                </StackPanel>
 			</Button>
 		</ToolBar>
 
