@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace WinHosts_Manager
 {
@@ -14,5 +10,7 @@ namespace WinHosts_Manager
 			get { return m_listHosts; }
 			set { m_listHosts = value; }
 		}
+
+		public ObservableCollection<Environment> Environments { get; set; } = new ObservableCollection<Environment>();
 	}
 }

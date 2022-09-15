@@ -9,6 +9,7 @@ using System.Xml;
 using System.IO;
 using System.Net;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 namespace WinHosts_Manager
 {
@@ -27,26 +28,28 @@ namespace WinHosts_Manager
 
 		private void Application_Startup(object sender, StartupEventArgs e)
 		{
+			ObservableCollection<Environment> dataEnvironments = null;
 			ObservableCollection<WinHost> dataHosts = null;
-			XmlReader oReader = null;
+
 			try
 			{
-				oReader = XmlReader.Create(GetConfigurationFilePath());
-				XmlSerializer oSerializer = new XmlSerializer(typeof(Configuration));
-				if (oSerializer.CanDeserialize(oReader))
+				StreamReader configurationFileReader = new StreamReader(GetConfigurationFilePath());
+				using (JsonReader configurationReader = new JsonTextReader(configurationFileReader))
 				{
-					Configuration oConfig = (Configuration)oSerializer.Deserialize(oReader);
+					Configuration oConfig = new JsonSerializer().Deserialize<Configuration>(configurationReader);
 					dataHosts = new ObservableCollection<WinHost>(oConfig.Hosts);
+					dataEnvironments = new ObservableCollection<Environment>(oConfig.Environments);
 				}
 			}
 			catch (FileNotFoundException)
 			{
 			}
-			catch (XmlException)
+			catch (JsonReaderException)
 			{
 			}
-			if (oReader != null)
-				oReader.Close();
+			catch (JsonSerializationException)
+			{
+			}
 
 			if (dataHosts == null)
 			{
@@ -56,12 +59,17 @@ namespace WinHosts_Manager
 				File.Copy(szHostsFile, szHostsFileBackup);
 				dataHosts = new ObservableCollection<WinHost>(ParseWinHosts());
 			}
+			if (dataEnvironments == null)
+			{
+				dataEnvironments = new ObservableCollection<Environment>();
+			}
+			Data.Environments = dataEnvironments;
 			Data.Hosts = dataHosts;
 		}
 
 		private string GetConfigurationFilePath()
 		{
-			return "hosts.xml";
+			return "config.json";
 		}
 
 		private string GetHostsFilePath()
@@ -130,15 +138,14 @@ namespace WinHosts_Manager
 		internal void SaveConfiguration()
 		{
 			Configuration toSave = new Configuration();
+			toSave.Environments = Data.Environments.ToList();
 			toSave.Hosts = Data.Hosts.ToList();
 
-			XmlTextWriter oWriter = new XmlTextWriter(GetConfigurationFilePath(), System.Text.Encoding.UTF8);
-			oWriter.Formatting = Formatting.Indented;
-			oWriter.IndentChar = '\t';
-			oWriter.Indentation = 1;
-			XmlSerializer oSerializer = new XmlSerializer(typeof(Configuration));
-			oSerializer.Serialize(oWriter, toSave);
-			oWriter.Close();
+			StreamWriter configurationFileWriter = new StreamWriter(GetConfigurationFilePath(), false, System.Text.Encoding.UTF8);
+			using (JsonWriter configurationWriter = new JsonTextWriter(configurationFileWriter))
+			{
+				new JsonSerializer().Serialize(configurationWriter, toSave);
+			}
 		}
 	}
 }

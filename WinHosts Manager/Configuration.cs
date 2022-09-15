@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace WinHosts_Manager
 {
@@ -10,8 +7,10 @@ namespace WinHosts_Manager
 		public Configuration()
 		{
 			Hosts = new List<WinHost>();
+			Environments = new List<Environment>();
 		}
 
+		public List<Environment> Environments { get; set; }
 		public List<WinHost> Hosts { get; set; }
 	}
 }
