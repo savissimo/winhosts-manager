@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v0.3] - TBD
+### Changed
+- Fixed: changing an IP address did not update the list view. 
+- Fixed: small UI inconsistencies. 
+
 ## [v0.2] - 2015-08-24
 ### Added
 - "Remove host" action to permanently remove a host from the list. 
